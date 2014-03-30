@@ -22,7 +22,13 @@ var main_state = {
 		this.pipes = game.add.group();
 		this.pipes.createMultiple(20, 'pipe');
 
-		this.timer = this.game.time.events.loop(1500, this.add_row_of_pipes, this);	    
+		this.timer = this.game.time.events.loop(1500, this.add_row_of_pipes, this);	
+
+        // score
+
+        this.score = 0;
+        var style = { font: "30px Arial", fill: "fefefe" };
+        this.label_score = this.game.add.text(20, 20, "0", style);    
     },
     
     // Function called 60 times per second
@@ -30,6 +36,7 @@ var main_state = {
 		if (this.bird.inWorld == false) {
 			this.restart_game();
 		}
+        this.game.physics.overlap(this.bird, this.pipes, this.restart_game, null, this);
     },
 
     // ---- custom functions ---- //
@@ -58,6 +65,8 @@ var main_state = {
     			this.add_one_pipe(400, i*60 + 10);
     		}
     	}
+        this.score += 1;
+        this.label_score.content = this.score;
     }
     
 };
