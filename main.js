@@ -9,6 +9,7 @@ var main_state = {
 		this.game.state.backgroundColor = '#71c5cf';
 		this.game.load.image('bird', 'assets/bird.png');
 		this.game.load.image('pipe', 'assets/pipe.png');
+		this.game.load.audio('jump', 'assets/jump.wav')
 	},
 
 	// Fuction called after 'preload' to setup the game
@@ -30,7 +31,10 @@ var main_state = {
 		this.label_score = this.game.add.text(20, 20, "0", style); 
 
 		// animate
-		this.bird.anchor.setTo(-0.2, 0.5);  
+		this.bird.anchor.setTo(-0.2, 0.5);
+
+		// sound
+		this.jump_sound = this.game.add.audio('jump');
 	},
 	
 	// Function called 60 times per second
@@ -55,6 +59,8 @@ var main_state = {
 		var animation = this.game.add.tween(this.bird);
 		animation.to({angle:-20}, 100)
 		animation.start();
+
+		this.jump_sound.play();
 	},
 
 	restart_game: function() {
