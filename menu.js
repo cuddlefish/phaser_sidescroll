@@ -4,7 +4,7 @@ var menu_state = {
 
 		// spacebar to jump
 		var space_key = this.game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
-		space_key.onDown.add(this.jump, this);
+		space_key.onDown.add(this.start, this);
 
 		// menu style
 		var style = {
