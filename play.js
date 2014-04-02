@@ -18,7 +18,7 @@ var play_state = {
 		this.jump_sound = this.game.add.audio('jump');
 
 		// score
-		this.score = 0;
+		score = 0;
 		var style = { font: "30px Arial", fill: "fefefe" };
 		this.label_score = this.game.add.text(20, 20, "0", style); 		
 	},
@@ -50,8 +50,8 @@ var play_state = {
 				this.add_one_pipe(400, i*60 + 10);
 			}
 		}
-		this.score += 1;
-		this.label_score.content = this.score;
+		score += 1;
+		this.label_score.content = score;
 	},
 
 	jump: function() {
@@ -80,7 +80,7 @@ var play_state = {
 
 	restart_game: function() {
 		// this.game.time.events.remove(this.timer);
-		this.game.state.start('main');
+		this.game.state.start('menu');
 	}
 
 };
