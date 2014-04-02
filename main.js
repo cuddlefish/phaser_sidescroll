@@ -4,38 +4,26 @@ var game = new Phaser.Game(400, 490, Phaser.AUTO, 'game_div');
 // Creates a new 'main' state that wil contain the game
 var main_state = {
 
-	// Function called first to load all the assets
-	preload: function() {
-		this.game.state.backgroundColor = '#71c5cf';
-		this.game.load.image('bird', 'assets/bird.png');
-		this.game.load.image('pipe', 'assets/pipe.png');
-		this.game.load.audio('jump', 'assets/jump.wav')
-	},
+	// 	this.bird = this.game.add.sprite(100, 245, 'bird');
+	// 	this.bird.body.gravity.y = 1000;
 
-	// Fuction called after 'preload' to setup the game
-	create: function() { 
-		this.bird = this.game.add.sprite(100, 245, 'bird');
-		this.bird.body.gravity.y = 1000;
+	// 	this.pipes = game.add.group();
+	// 	this.pipes.createMultiple(20, 'pipe');
 
-		var space_key = this.game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
-		space_key.onDown.add(this.jump, this);
+	// 	this.timer = this.game.time.events.loop(1500, this.add_row_of_pipes, this);	
 
-		this.pipes = game.add.group();
-		this.pipes.createMultiple(20, 'pipe');
+	// 	// score
+	// 	this.score = 0;
+	// 	var style = { font: "30px Arial", fill: "fefefe" };
+	// 	this.label_score = this.game.add.text(20, 20, "0", style); 
 
-		this.timer = this.game.time.events.loop(1500, this.add_row_of_pipes, this);	
+	// 	// animate
+	// 	this.bird.anchor.setTo(-0.2, 0.5);
 
-		// score
-		this.score = 0;
-		var style = { font: "30px Arial", fill: "fefefe" };
-		this.label_score = this.game.add.text(20, 20, "0", style); 
+	// 	// sound
+	// 	this.jump_sound = this.game.add.audio('jump');
+	// };
 
-		// animate
-		this.bird.anchor.setTo(-0.2, 0.5);
-
-		// sound
-		this.jump_sound = this.game.add.audio('jump');
-	},
 	
 	// Function called 60 times per second
 	update: function() {
